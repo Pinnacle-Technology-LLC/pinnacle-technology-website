@@ -1,0 +1,6 @@
+export { Hero } from './hero'
+export { TrustBar } from './trust-bar'
+export { FeaturedWork } from './featured-work'
+export { Services } from './services'
+export { WhyPinnacle } from './why-pinnacle'
+export { CTA } from './cta'
