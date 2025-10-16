@@ -29,7 +29,7 @@ export const featuredProjects: FeaturedProject[] = [
       { label: 'Metadata records deployed', value: 15000, isCounter: true, suffix: '+' },
       { label: 'Multi-source capability', value: 'Gov, Research, Civic', isCounter: false },
     ],
-    slug: 'hhs-scaling',
+    slug: 'universal-data-catalog',
     image:
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
     color: 'from-brand-cyan/80 to-brand-navy/90',

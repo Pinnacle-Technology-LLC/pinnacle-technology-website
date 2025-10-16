@@ -22,7 +22,7 @@ export function WhyPinnacle() {
         <ScrollReveal>
           <div className="mb-16 text-center">
             <p className="text-brand-warm mb-2 text-sm font-semibold tracking-wider uppercase">
-              Why Partners Choose Pinnacle
+              Why Partners Choose Pinnacle Technology
             </p>
             <h2 className="text-brand-black mb-4 text-4xl font-bold md:text-5xl">
               Engineered for Stability. Delivered for Results.

@@ -67,12 +67,12 @@ export function CTA() {
               </svg>
             </Link>
 
-            <Link
+            {/* <Link
               href="/work"
               className="group border-brand-white/30 text-brand-white hover:border-brand-white hover:bg-brand-white/10 inline-flex items-center gap-2 rounded-sm border-2 px-10 py-5 text-lg font-semibold backdrop-blur-sm transition-all"
             >
               View Our Work
-            </Link>
+            </Link> */}
           </div>
 
           {/* Trust Indicators */}

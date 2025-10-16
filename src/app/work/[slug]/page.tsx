@@ -55,14 +55,21 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 </Badge>
               ))}
             </div>
-            <h1 className="text-5xl font-bold tracking-tight text-slate-900">
-              {frontmatter.title}
+            <h1 className="text-center text-5xl font-bold tracking-tight text-slate-900">
+              {frontmatter.title.split(' | ').map((part, index, array) => (
+                <span key={index}>
+                  {part}
+                  {index < array.length - 1 && <br />}
+                </span>
+              ))}
             </h1>
-            <p className="mt-4 text-xl text-slate-600">{frontmatter.client}</p>
             {frontmatter.supportedVia && (
-              <p className="mt-2 text-sm text-slate-500">
+              <p className="mt-4 text-center text-sm text-slate-500">
                 Supported via {frontmatter.supportedVia}
               </p>
+            )}
+            {!frontmatter.supportedVia && frontmatter.client && (
+              <p className="mt-4 text-xl text-slate-600">{frontmatter.client}</p>
             )}
           </div>
         </Container>
