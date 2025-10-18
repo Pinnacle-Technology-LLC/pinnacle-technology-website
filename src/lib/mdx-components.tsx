@@ -1,5 +1,6 @@
 import type { MDXComponents } from 'mdx/types'
 import Link from 'next/link'
+import Image from 'next/image'
 
 /**
  * Custom MDX components for rendering case studies
@@ -37,6 +38,24 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     pre: ({ children }) => (
       <pre className="mb-4 overflow-x-auto rounded-lg bg-slate-900 p-4">{children}</pre>
     ),
+    // Custom Image component for MDX
+    img: ({ src, alt, ...props }: { src?: string; alt?: string; [key: string]: unknown }) => {
+      // Handle external images
+      if (src?.startsWith('http')) {
+        return <img src={src} alt={alt || ''} {...props} />
+      }
+      // Use Next.js Image for local images
+      return (
+        <Image
+          src={src || ''}
+          alt={alt || ''}
+          width={1200}
+          height={800}
+          className="rounded-lg"
+          {...props}
+        />
+      )
+    },
     ...components,
   }
 }
