@@ -21,10 +21,10 @@ export interface FeaturedProject {
 
 export const featuredProjects: FeaturedProject[] = [
   {
-    title: 'Universal Data Catalog',
+    title: 'Universal Metadata Infrastructure',
     client: 'Federal & Public Sector',
     description:
-      'Universal metadata infrastructure that connects and monitors datasets across platforms. Automatically harvests and enriches public data sources, enabling discovery and routing without data duplication — deployed for 15,000+ government and civic datasets.',
+      'Scalable metadata infrastructure that unifies and connects datasets across platforms — enabling automated discovery, enrichment, and redirection to authoritative data sources. Deployed for 15,000+ government datasets with standards-compliant architecture.',
     metrics: [
       { label: 'Metadata records deployed', value: 15000, isCounter: true, suffix: '+' },
       { label: 'Multi-source capability', value: 'Gov, Research, Civic', isCounter: false },
