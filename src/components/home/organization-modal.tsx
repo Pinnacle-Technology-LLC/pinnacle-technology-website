@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect } from 'react'
-import Image from 'next/image'
 
 /**
  * Props for the OrganizationModal component
@@ -11,7 +10,6 @@ interface OrganizationModalProps {
   onClose: () => void
   organization: {
     name: string
-    logo: string
     about: string
     services: string[]
     highlights: string[]
@@ -100,22 +98,10 @@ export function OrganizationModal({ isOpen, onClose, organization }: Organizatio
 
         {/* Modal Body */}
         <div className="p-8 md:p-12">
-          {/* Logo Section */}
-          <div className="mb-8 flex justify-center">
-            <div className="relative h-32 w-full max-w-md">
-              <Image
-                src={organization.logo}
-                alt={`${organization.name} logo`}
-                fill
-                className="object-contain"
-              />
-            </div>
-          </div>
-
           {/* Organization Name */}
           <h2
             id="modal-title"
-            className="text-brand-navy mb-8 text-center text-3xl font-bold md:text-4xl"
+            className="text-brand-navy mb-12 text-center text-3xl font-bold md:text-4xl"
           >
             {organization.name}
           </h2>

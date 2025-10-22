@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import { OrganizationModal } from './organization-modal'
 
 /**
@@ -9,8 +8,8 @@ import { OrganizationModal } from './organization-modal'
  */
 interface Client {
   name: string
-  logo: string
   abbrev: string
+  sector: string
   about: string
   services: string[]
   highlights: string[]
@@ -20,8 +19,9 @@ interface Client {
 /**
  * TrustBar Component
  *
- * Displays client logos in a grid with interactive modals showing detailed partnership information.
- * Logos animate on scroll and can be clicked to open organization details in a modal.
+ * Displays client organizations as typography-based logo cards with interactive modals
+ * showing detailed partnership information. Features clean, professional design with
+ * sector-specific styling.
  *
  * @component
  * @example
@@ -37,8 +37,8 @@ export function TrustBar() {
   const clients: Client[] = [
     {
       name: 'Tyler Technologies',
-      logo: 'https://upload.wikimedia.org/wikipedia/en/b/bf/Tyler_Technologies_logo.svg',
       abbrev: 'TTI',
+      sector: 'Technology Partner',
       about:
         'In our ongoing partnership with Tyler Technologies, we deliver software development and consulting services that enhance and extend the capabilities of the Socrata / Data & Insights platform. Our work helps government agencies publish, manage, and visualize open data more efficiently, with improved scalability and long-term resilience.',
       services: [
@@ -60,8 +60,8 @@ export function TrustBar() {
     },
     {
     name: 'Centers for Disease Control and Prevention (CDC)',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/7/71/US_CDC_logo.svg',
     abbrev: 'CDC',
+    sector: 'Federal Healthcare',
     about:
         'In collaboration with Tyler Technologies, we\'ve provided engineering expertise to support the CDC\'s public health data initiatives on the Socrata platform. Our focus has been on optimizing data architecture, improving integration processes, and enhancing system workflows to ensure the reliable and timely delivery of critical health information.',
     services: [
@@ -81,8 +81,8 @@ export function TrustBar() {
     },
     {
       name: 'National Institutes of Health (NIH)',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/NIH_2013_logo_vertical.svg',
       abbrev: 'NIH',
+      sector: 'Federal Healthcare',
       about:
         'In collaboration with Tyler Technologies, we supported the enhancement of the NIH\'s research data infrastructure built on the Socrata platform. Our efforts focused on improving data management, accessibility, and platform performance to better serve the needs of biomedical researchers and public health initiatives.',
       services: [
@@ -102,8 +102,8 @@ export function TrustBar() {
     },
     {
     name: 'U.S. Department of Transportation (DOT)',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/a/af/Seal_of_the_United_States_Department_of_Transportation.svg',
     abbrev: 'DOT',
+    sector: 'Federal Government',
     about:
         'In partnership with Tyler Technologies, we\'ve supported the modernization of the DOT\'s data infrastructure and the advancement of its open data initiatives through Socrata-based systems. Our work focuses on enhancing accessibility, usability, and performance across critical transportation datasets made available to the public.',
     services: [
@@ -123,8 +123,8 @@ export function TrustBar() {
     },
     {
     name: 'U.S. Department of Veterans Affairs (VA)',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/c/cd/US_Department_of_Veterans_Affairs_logo.svg',
     abbrev: 'VA',
+    sector: 'Federal Government',
     about:
         'In partnership with Tyler Technologies, we contributed to data visualization and reporting initiatives for the U.S. Department of Veterans Affairs using the Socrata platform. Our efforts centered on improving access to veterans program data and enabling state-level insights through more intuitive, reliable tools.',
     services: [
@@ -144,8 +144,8 @@ export function TrustBar() {
     },
     {
       name: 'U.S. Department of Health and Human Services (HHS)',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/1/15/US-DeptOfHHS-Logo.svg',
       abbrev: 'HHS',
+      sector: 'Federal Healthcare',
       about:
         'In collaboration with Tyler Technologies, we provide ongoing engineering and data infrastructure support to the U.S. Department of Health and Human Services through the Socrata platform. Our efforts are focused on building scalable ingestion systems and sustainable data management pipelines to support one of the largest public data portfolios in government.',
       services: [
@@ -165,8 +165,8 @@ export function TrustBar() {
     },
     {
     name: 'European Commission (Cohesion Open Data)',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/8/84/European_Commission.svg',
     abbrev: 'EC',
+    sector: 'International',
     about:
         'As the dedicated development and maintenance team for the European Commission\'s Cohesion Open Data platform, we play a key role in advancing transparency across EU budget reporting. Our work ensures that cohesion fund data is published openly, reliably, and in compliance with EU standards—serving millions of users across Europe.',
     services: [
@@ -186,8 +186,8 @@ export function TrustBar() {
     },
     {
     name: 'Socrata',
-    logo: 'https://logodix.com/logo/1608921.jpg',
     abbrev: 'SOC',
+    sector: 'Technology Partner',
     about:
         'As long-term partners with Socrata (now part of Tyler Technologies), we\'ve played a key role in extending and enhancing the platform across a wide range of government deployments. Our team brings deep technical expertise in platform customization, integration development, and client enablement—helping public-sector organizations fully leverage Socrata for their open data goals.',
     services: [
@@ -249,45 +249,49 @@ export function TrustBar() {
               Leading Organizations
             </h2>
             <p className="text-brand-black/70 mx-auto mt-4 max-w-2xl text-lg">
-              Click any logo to learn more about our partnership and the impact we&apos;ve delivered
+              Click any organization to learn more about our partnership and the impact we&apos;ve delivered
             </p>
           </div>
 
-          {/* Logo Grid */}
-          <div className="grid grid-cols-2 gap-12 md:grid-cols-3 lg:grid-cols-4">
-            {clients.map((client, index) => (
-              <button
-                key={client.name}
-                onClick={() => handleLogoClick(client)}
-                className="client-logo group focus:ring-brand-cyan flex items-center justify-center opacity-0 transition-all hover:scale-110 focus:ring-2 focus:ring-offset-2 focus:outline-none"
-                style={{ animationDelay: `${index * 100}ms` }}
-                aria-label={`Learn more about ${client.name}`}
-              >
-                {client.logo ? (
-                  <div className="relative h-16 w-full grayscale transition-all duration-300 group-hover:grayscale-0 md:h-20">
-                    <Image
-                      src={client.logo}
-                      alt={`${client.name} logo`}
-                      fill
-                      className="object-contain object-center"
-                    />
-                  </div>
-                ) : (
-                  <div className="bg-brand-navy text-brand-white group-hover:bg-brand-cyan flex h-20 w-20 items-center justify-center rounded-full text-2xl font-bold transition-all">
-                    {client.abbrev}
-                  </div>
-                )}
-              </button>
-            ))}
-          </div>
+          {/* Typography-Based Logo Cards */}
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-8 lg:grid-cols-4 lg:gap-10">
+            {clients.map((client, index) => {
+              // Sector-specific backgrounds with unified typography
+              const sectorBackgrounds = {
+                'Federal Healthcare': client.abbrev === 'CDC' ? 'bg-blue-50/50' : client.abbrev === 'NIH' ? 'bg-purple-50/50' : 'bg-sky-50/50',
+                'Federal Government': client.abbrev === 'DOT' ? 'bg-slate-50/50' : 'bg-indigo-50/50',
+                'Technology Partner': client.abbrev === 'TTI' ? 'bg-cyan-50/50' : 'bg-teal-50/50',
+                'International': 'bg-blue-50/50'
+              }
 
-          {/* Footer Note
-          <div className="mt-16 rounded-lg border border-brand-cyan/20 bg-brand-cyan/5 p-6 text-center">
-            <p className="text-sm text-brand-black/70">
-              <span className="font-semibold text-brand-cyan">Primary Partner:</span> Many of these
-              engagements are supported through our partnership with Tyler Technologies, Inc.
-            </p>
-          </div> */}
+              const bgColor = sectorBackgrounds[client.sector as keyof typeof sectorBackgrounds] || 'bg-gray-50/50'
+
+              // Format organization name for display (abbreviated for long names)
+              const displayName = client.name
+                .replace('U.S. Department of', 'U.S. Dept. of')
+                .replace('and Prevention', '& Prevention')
+
+              return (
+                <button
+                  key={client.name}
+                  onClick={() => handleLogoClick(client)}
+                  className={`client-logo group relative flex min-h-[140px] flex-col items-center justify-center rounded-xl ${bgColor} p-6 opacity-0 shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-offset-2`}
+                  style={{ animationDelay: `${index * 100}ms` }}
+                  aria-label={`Learn more about ${client.name}`}
+                >
+                  {/* Organization Name */}
+                  <h3 className="text-brand-black/90 mb-2 text-center text-lg font-bold leading-tight md:text-xl">
+                    {displayName}
+                  </h3>
+
+                  {/* Sector Label */}
+                  <p className="text-brand-black/60 text-center text-xs font-medium uppercase tracking-wider">
+                    {client.sector}
+                  </p>
+                </button>
+              )
+            })}
+          </div>
         </div>
       </section>
 

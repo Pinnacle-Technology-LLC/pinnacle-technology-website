@@ -41,7 +41,7 @@ export function CTA() {
 
           {/* Description */}
           <p className="text-brand-cream/90 mb-10 text-xl leading-relaxed md:text-2xl">
-            Let’s talk about your data goals and explore how we can help you deliver secure,
+            Let&apos;s talk about your data goals and explore how we can help you deliver secure,
             scalable systems that last.
           </p>
 
@@ -66,13 +66,6 @@ export function CTA() {
                 />
               </svg>
             </Link>
-
-            {/* <Link
-              href="/work"
-              className="group border-brand-white/30 text-brand-white hover:border-brand-white hover:bg-brand-white/10 inline-flex items-center gap-2 rounded-sm border-2 px-10 py-5 text-lg font-semibold backdrop-blur-sm transition-all"
-            >
-              View Our Work
-            </Link> */}
           </div>
 
           {/* Trust Indicators */}
